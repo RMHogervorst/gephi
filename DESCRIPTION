@@ -1,0 +1,16 @@
+Package: gephi
+Version: 0.0.0.9000
+Title: What the Package Does (One Line, Title Case)
+Description: What the package does (one paragraph).
+Authors@R: person("Roel M.", "Hogervorst", email ="hogervorst.rm@gmail.com", role = c("cre", "aut"), comment = c(ORCID = "0000-0001-7509-0328"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+URL: https://github.com/rmhogervorst/
+BugReports: https://github.com/rmhogervorst/
+Suggests: 
+    testthat
+    readr
+Imports: 
+

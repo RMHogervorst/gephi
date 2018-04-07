@@ -1,16 +1,16 @@
 Package: gephi
-Version: 0.0.0.9000
 Title: What the Package Does (One Line, Title Case)
-Description: What the package does (one paragraph).
+Version: 0.0.0.9000
 Authors@R: person("Roel M.", "Hogervorst", email ="hogervorst.rm@gmail.com", role = c("cre", "aut"), comment = c(ORCID = "0000-0001-7509-0328"))
+Description: What the package does (one paragraph).
 License: MIT + file LICENSE
+URL: https://github.com/RMHogervorst/gephi
+BugReports: https://github.com/RMHogervorst/gephi/issues
+Suggests: 
+    readr,
+    testthat
+ByteCompile: true
 Encoding: UTF-8
 LazyData: true
-ByteCompile: true
-URL: https://github.com/rmhogervorst/
-BugReports: https://github.com/rmhogervorst/
-Suggests: 
-    testthat
-    readr
 Imports: 
-
+    igraph

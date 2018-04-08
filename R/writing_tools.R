@@ -1,20 +1,20 @@
-#' Write edgefile to csv
-write_edgefile <- function(x, path, Weight = NULL, Type = NULL){
-    # reset column order?
-    # (Target, Source, *Weight, *Type)
-    # deal with possible type?
-    stopifnot(is.data.frame(x))
-    oldorder <- names(x)
-    t <- grep("Target", oldorder)
-    s <- grep("Source", oldorder)
-    others <- seq_len(NCOL(x))[c(-t,-s)]
-
-    write_safe(
-        x = x[c(t,s, others)],
-        path = path
-    )
-}
-
+# Write edgefile to csv
+# write_edgefile <- function(x, path, Weight = NULL, Type = NULL){
+#     # reset column order?
+#     # (Target, Source, *Weight, *Type)
+#     # deal with possible type?
+#     stopifnot(is.data.frame(x))
+#     oldorder <- names(x)
+#     t <- grep("Target", oldorder)
+#     s <- grep("Source", oldorder)
+#     others <- seq_len(NCOL(x))[c(-t,-s)]
+#
+#     write_safe(
+#         x = x[c(t,s, others)],
+#         path = path
+#     )
+# }
+#
 
 #' Write to csv
 #'
@@ -22,6 +22,7 @@ write_edgefile <- function(x, path, Weight = NULL, Type = NULL){
 #' if it can be found, and will fall back to write.csv
 #' from base if not. This allows me to keep the number
 #' of dependencies low.
+#' @importFrom utils write.csv
 #' @noRd
 write_safe <- function(x, path, na = ""){
     if(requireNamespace("readr", quietly = TRUE)){
@@ -44,32 +45,49 @@ write_safe <- function(x, path, na = ""){
 #' assume the edges are between the first and second column, but you can
 #' specify if that is not the case.
 #'
-#' @family extractors
+#' @param graph The igraph or tidygraph object your work  with
+#' @param path the file where to save to e.g.: edges.csv or data/edges.csv
+#' @param na How to record missing values, defaults to "", nothing
+#' @param verbose by default these functions are chatty and will tell you what they do if you do not want that, set to FALSE
+#' @param pathedges where to save the edges file e.g.: 'edges.csv'
+#' @param pathnodes where to save the nodes file e.g.: 'nodes.csv'
+#' @return invisible original object
 #' @export
 gephi_write_nodes <- function(graph, path, na = "", verbose = TRUE){
     result <- igraph::get.data.frame(graph, what = "nodes")
     names(result)[1] <- "Id"
     if(verbose){message(paste0("writing nodes",deparse(substitute(graph)),"\nto nodefile: ",path) )}
     write_safe(result, path, na = na)
+    return(invisible(graph))
 }
 
-#' @describeIn gephi_write_nodes
+#' @describeIn gephi_write_nodes Write nodes data to csv
 #' @export
 gephi_write_edges <- function(graph, path,na = "", verbose = TRUE){
     result <- igraph::get.data.frame(graph, what = "edges")
     names(result)[1:2] <- c("Source", "Target")
     if(verbose){message(paste0("writing edges",deparse(substitute(graph)),"\nto edgefile: ",path) )}
     write_safe(result, path, na = na)
+    return(invisible(graph))
 }
 
-#' @describeIn gephi_write_nodes
+#' @describeIn gephi_write_nodes Write both node and edge data away
 #' @export
 gephi_write_both <- function(graph, pathedges, pathnodes, na = "", verbose = TRUE){
     gephi_write_edges(graph = graph, path = pathedges, na = na, verbose = verbose)
     gephi_write_nodes(graph = graph, path = pathnodes, na = na, verbose = verbose)
+    return(invisible(graph))
 }
 
-#' @describeIn gephi_write_nodes
+#' Write edges from a data.frame to a file
+#'
+#' Sometimes you just want to write a data.frame to a csv.
+#' Give the column name where the edges start and finish.
+#' @param dataframe which dataframe
+#' @param from which column does the edge start
+#' @param to which column does the edge end
+#' @inheritParams gephi_write_nodes
+#' @export
 gephi_write_edges_from_df <- function(dataframe, from = NULL, to = NULL, path, na = "",verbose = TRUE){
     df_names <- names(dataframe)
     if(is.null(from)){

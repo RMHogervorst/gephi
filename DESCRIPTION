@@ -1,11 +1,20 @@
 Package: gephi
-Title: What the Package Does (One Line, Title Case)
+Title: Write graph objects to a file format that gephi understands
 Version: 0.0.0.9000
-Authors@R: person("Roel M.", "Hogervorst", email ="hogervorst.rm@gmail.com", role = c("cre", "aut"), comment = c(ORCID = "0000-0001-7509-0328"))
-Description: What the package does (one paragraph).
+Authors@R: person("Roel M.", "Hogervorst", 
+            email ="hogervorst.rm@gmail.com", 
+            role = c("cre", "aut"), 
+            comment = c(ORCID = "0000-0001-7509-0328"))
+Description: 
+    Sometimes you want to visualize your graph information in gephi. 
+    Gephi needs certain column names to make sense of the file. 
+    This package writes edge and node information to csv files with
+    correct names.
 License: MIT + file LICENSE
 URL: https://github.com/RMHogervorst/gephi
 BugReports: https://github.com/RMHogervorst/gephi/issues
+Depends:
+    R(>= 2.10)
 Suggests: 
     readr,
     testthat
@@ -14,3 +23,4 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     igraph
+RoxygenNote: 6.0.1

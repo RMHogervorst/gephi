@@ -1,0 +1,101 @@
+---
+output: github_document
+---
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![license](https://img.shields.io/badge/license-MIT + file LICENSE-lightgrey.svg)](http://choosealicense.com/)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# gephi
+
+This is a simple package to export files into a csv format that 
+gephi can understand.
+
+
+I've found the need to convert tidygraph/igraph objects into a node and edge csv, to visualize in gephi quite often. 
+This should be trivial, but gephi is a bit particular and wants specific column names. 
+
+## What does the package do?
+Writes igraph files to csv format that gephi likes.
+Really? Gephi reads csv files just fine! 
+Sure but it wants the columns in a particular order and named Source, Target etc. Let's not do this by hand everytime: AUTOMATE THE BORING STUFF! 
+
+
+## Installation
+
+Install this developmental version with:
+
+```{r,eval=FALSE} 
+# install.packages("devtools")
+devtools::install_github("RMHogervorst/gephi")
+```
+
+
+## Example
+
+* igraph to csv
+* tidygraph to csv
+* dataframe to csv
+
+Writing out an igraph file to csv:
+
+```{r example}
+library(gephi)
+library(igraph)
+V(graphexample)
+E(graphexample)
+gephi_write_edges(graphexample, "edges.csv")
+```
+
+Technically an tidygraph object is also an igraph object
+so the writing will work the same.
+
+```{r}
+library(gephi)
+library(tidygraph)
+graphexample
+```
+
+More specifically if you want to modify and 
+visualize a subset of your
+graph in gephi:
+
+```{r}
+graphexample %>% 
+    activate(nodes) %>% 
+    filter(color == "blue") %>% 
+    activate(edges) %>% 
+    mutate(dongle = "dingle") %>% 
+    gephi_write_edges("edges_subset.csv") %>% 
+    print()
+```
+
+But is is also possible to write a set of edges when there is
+no graph object, just a dataframe.
+
+```{r}
+data.frame(
+    start = c(1,2,3,4,5,6,7),
+    finish = c(2,4,4,7,2,1,3),
+    weight = c(1,1,1,2,6,1,1)
+) %>% 
+    print() %>% 
+    gephi_write_edges_from_df(path = "edges2.csv")
+```
+
+
+
+```{r cleaning up afterwards}
+file.remove("edges.csv")
+file.remove("edges2.csv")
+file.remove("edges_subset.csv")
+```
+
+

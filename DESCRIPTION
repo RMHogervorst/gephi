@@ -11,7 +11,7 @@ Description:
     This package writes edge and node information to csv files with
     correct names.
 License: MIT + file LICENSE
-URL: https://github.com/RMHogervorst/gephi
+URL: http://rmhogervorst.nl/gephi/
 BugReports: https://github.com/RMHogervorst/gephi/issues
 Depends:
     R(>= 2.10)

@@ -1,21 +1,30 @@
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](http://choosealicense.com/)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](http://choosealicense.com/)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-gephi
-=====
 
-This is a simple package to export files into a csv format that gephi can understand.
+# gephi
 
-I've found the need to convert tidygraph/igraph objects into a node and edge csv, to visualize in gephi quite often. This should be trivial, but gephi is a bit particular and wants specific column names.
+This is a simple package to export files into a csv format that gephi
+can understand. This package does not interface with the open source
+network vizualisation software gephi but it writes and reads in the same
+csv format as gephi.
 
-What does the package do?
--------------------------
+I’ve found the need to convert tidygraph/igraph objects into a node and
+edge csv, to visualize in gephi quite often. This should be trivial, but
+gephi is a bit particular and wants specific column names.
 
-Writes igraph files to csv format that gephi likes. Really? Gephi reads csv files just fine! Sure but it wants the columns in a particular order and named Source, Target etc. Let's not do this by hand everytime: AUTOMATE THE BORING STUFF!
+## What does the package do?
 
-Installation
-------------
+Writes igraph files to csv format that gephi likes. Really? Gephi reads
+csv files just fine\! Sure but it wants the columns in a particular
+order and named Source, Target etc. Let’s not do this by hand everytime:
+AUTOMATE THE BORING STUFF\! HACK THE PLANET\!
+
+## Installation
 
 Install this developmental version with:
 
@@ -24,17 +33,16 @@ Install this developmental version with:
 devtools::install_github("RMHogervorst/gephi")
 ```
 
-Example
--------
+## Example
 
--   igraph to csv
--   tidygraph to csv
--   dataframe to csv
+  - igraph to csv
+  - tidygraph to csv
+  - dataframe to csv
 
 Writing out an igraph file to csv:
 
 ``` r
-library(gephi)
+library(gephi) # includes the graphexample file
 library(igraph)
 #> 
 #> Attaching package: 'igraph'
@@ -45,17 +53,18 @@ library(igraph)
 #> 
 #>     union
 V(graphexample)
-#> + 5/5 vertices, named, from 48f6ce8:
+#> + 5/5 vertices, named, from 3f94ec7:
 #> [1] a d b c f
 E(graphexample)
-#> + 5/5 edges from 48f6ce8 (vertex names):
+#> + 5/5 edges from 3f94ec7 (vertex names):
 #> [1] a->b a->c a->d d->b d->f
 gephi_write_edges(graphexample, "edges.csv")
 #> writing edgesgraphexample
-#> to edgefile: edges.csv
+#> to edgefile: edges.csv/n
 ```
 
-Technically an tidygraph object is also an igraph object so the writing will work the same.
+Technically an tidygraph object is also an igraph object so the writing
+will work the same.
 
 ``` r
 library(gephi)
@@ -68,7 +77,8 @@ library(tidygraph)
 #> The following object is masked from 'package:stats':
 #> 
 #>     filter
-graphexample
+
+(tidy_graphexample <- tidygraph::as_tbl_graph(graphexample)) # Just to show where this function comes from
 #> # A tbl_graph: 5 nodes and 5 edges
 #> #
 #> # A directed acyclic simple graph with 1 component
@@ -85,16 +95,19 @@ graphexample
 #> # Edge Data: 5 x 3
 #>    from    to weight
 #>   <int> <int>  <dbl>
-#> 1     1     3     1.
-#> 2     1     4     1.
-#> 3     1     2     1.
-#> # ... with 2 more rows
+#> 1     1     3      1
+#> 2     1     4      1
+#> 3     1     2      1
+#> # … with 2 more rows
 ```
 
-More specifically if you want to modify and visualize a subset of your graph in gephi:
+More specifically if you want to modify your graph and visualize a
+subset in gephi, here is a tidygraph worked example where I select only
+the edges that are blue, add a new edge property and write the resuling
+graph to the :
 
 ``` r
-graphexample %>% 
+tidy_graphexample %>%  # but the igraph object works just as well
     activate(nodes) %>% 
     filter(color == "blue") %>% 
     activate(edges) %>% 
@@ -102,7 +115,7 @@ graphexample %>%
     gephi_write_edges("edges_subset.csv") %>% 
     print()
 #> writing edges.
-#> to edgefile: edges_subset.csv
+#> to edgefile: edges_subset.csv/n
 #> # A tbl_graph: 3 nodes and 2 edges
 #> #
 #> # A rooted tree
@@ -110,8 +123,8 @@ graphexample %>%
 #> # Edge Data: 2 x 4 (active)
 #>    from    to weight dongle
 #>   <int> <int>  <dbl> <chr> 
-#> 1     1     2     1. dingle
-#> 2     1     3     1. dingle
+#> 1     1     2      1 dingle
+#> 2     1     3      1 dingle
 #> #
 #> # Node Data: 3 x 2
 #>   name  color
@@ -121,16 +134,16 @@ graphexample %>%
 #> 3 c     blue
 ```
 
-But is is also possible to write a set of edges when there is no graph object, just a dataframe.
+But is is also possible to write a set of edges when there is no graph
+object, just a dataframe.
 
 ``` r
-data.frame(
+a_nice_df <- data.frame(
     start = c(1,2,3,4,5,6,7),
     finish = c(2,4,4,7,2,1,3),
     weight = c(1,1,1,2,6,1,1)
-) %>% 
-    print() %>% 
-    gephi_write_edges_from_df(path = "edges2.csv")
+)
+print(a_nice_df) 
 #>   start finish weight
 #> 1     1      2      1
 #> 2     2      4      1
@@ -139,11 +152,24 @@ data.frame(
 #> 5     5      2      6
 #> 6     6      1      1
 #> 7     7      3      1
-#> writing edges from dataframestructure(list(Source = c(1, 2, 3, 4, 5, 6, 7), Target = c(2, 
-#> to edgefile: edges2.csvwriting edges from dataframe4, 4, 7, 2, 1, 3), weight = c(1, 1, 1, 2, 6, 1, 1)), .Names = c("Source", 
-#> to edgefile: edges2.csvwriting edges from dataframe"Target", "weight"), row.names = c(NA, -7L), class = "data.frame")
+gephi_write_edges_from_df(a_nice_df, path = "edges2.csv")
+#> writing edges from dataframe 
 #> to edgefile: edges2.csv
 ```
+
+<details>
+
+<summary> Test coverage statistics </summary>
+
+``` r
+covr::package_coverage(type = "tests")
+#> gephi Coverage: 30.00%
+#> R/writing_tools.R: 18.75%
+#> R/utils.R: 66.67%
+#> R/read_tools.R: 100.00%
+```
+
+</details>
 
 ``` r
 file.remove("edges.csv")
@@ -153,3 +179,7 @@ file.remove("edges2.csv")
 file.remove("edges_subset.csv")
 #> [1] TRUE
 ```
+
+# Links
+
+  - [Gephi website](https://gephi.org/)

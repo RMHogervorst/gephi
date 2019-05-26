@@ -6,10 +6,15 @@ Authors@R: person("Roel M.", "Hogervorst",
             role = c("cre", "aut"), 
             comment = c(ORCID = "0000-0001-7509-0328"))
 Description: 
-    Sometimes you want to visualize your graph information in gephi. 
-    Gephi needs certain column names to make sense of the file. 
+    Sometimes you want to visualize your graph information in 'gephi'. 
+    'Gephi' needs certain column names to make sense of the file. 
     This package writes edge and node information to csv files with
-    correct names.
+    correct names so you can read it in easily with gephi. 
+    You can also read the files in with igraph/tidygraph. It makes it 
+    much easier to switch between R and 'gephi'. This R-package does not 
+    interface with the open source network visualisation tool 'gephi' but it
+    writes and reads csv files in a way that 'gephi' expects, reducing the 
+    friction when switching between tools.
 License: MIT + file LICENSE
 BugReports: https://github.com/RMHogervorst/gephi/issues
 URL: https://github.com/RMHogervorst/gephi
@@ -22,5 +27,5 @@ ByteCompile: true
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    igraph
-RoxygenNote: 6.0.1
+    igraph (>= 1.2.4.0)
+RoxygenNote: 6.1.1

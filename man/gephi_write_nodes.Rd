@@ -17,7 +17,7 @@ gephi_write_both(graph, pathedges, pathnodes, na = "", verbose = TRUE)
 
 \item{path}{the file where to save to e.g.: edges.csv or data/edges.csv}
 
-\item{na}{How to record missing values, defaults to "", nothing}
+\item{na}{How to record missing values, defaults to "", nothing / empty values}
 
 \item{verbose}{by default these functions are chatty and will tell you what they do if you do not want that, set to FALSE}
 
@@ -26,7 +26,7 @@ gephi_write_both(graph, pathedges, pathnodes, na = "", verbose = TRUE)
 \item{pathnodes}{where to save the nodes file e.g.: 'nodes.csv'}
 }
 \value{
-invisible original object
+invisible original object so you could continue using it in a pipe if you want to
 }
 \description{
 write_nodes will write the nodes, and write_edges will write
@@ -47,3 +47,7 @@ specify if that is not the case.
 \item \code{gephi_write_both}: Write both node and edge data away
 }}
 
+\seealso{
+Other write_graphs: \code{\link{gephi_write_edges_from_df}}
+}
+\concept{write_graphs}

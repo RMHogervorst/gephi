@@ -16,11 +16,21 @@ gephi_write_edges_from_df(dataframe, from = NULL, to = NULL, path,
 
 \item{path}{the file where to save to e.g.: edges.csv or data/edges.csv}
 
-\item{na}{How to record missing values, defaults to "", nothing}
+\item{na}{How to record missing values, defaults to "", nothing / empty values}
 
 \item{verbose}{by default these functions are chatty and will tell you what they do if you do not want that, set to FALSE}
 }
-\description{
-Sometimes you just want to write a data.frame to a csv.
-Give the column name where the edges start and finish.
+\value{
+invisible original object so you could continue using it in a pipe if you want to
 }
+\description{
+If you have a dataframe that represents a graph and you don't want to turn it
+into an igraph/tidygraph object first, this function will turn it into a csv.
+Give the column name where the edges start and the column name of the edge
+end. If you don't specify it, this function expects the first column to be a
+the start and second column the end point of an edge.
+}
+\seealso{
+Other write_graphs: \code{\link{gephi_write_nodes}}
+}
+\concept{write_graphs}

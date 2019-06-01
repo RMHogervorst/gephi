@@ -1,8 +1,15 @@
 
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
+<!-- badges: start --> [![Project Status: Active – The project has
+reached a stable, usable state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![license](https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg)](http://choosealicense.com/)
+[![license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](http://choosealicense.com/)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![codecov](https://codecov.io/gh/RMHogervorst/gephi/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/gephi)
+[![Build
+Status](https://travis-ci.org/RMHogervorst/gephi.svg?branch=master)](https://travis-ci.org/RMHogervorst/gephi)
+
+<!-- badges: end -->
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -163,6 +170,8 @@ gephi_write_edges_from_df(a_nice_df, path = "edges2.csv")
 
 ``` r
 covr::package_coverage(type = "tests")
+#> 
+#> files differ in number of lines:
 #> gephi Coverage: 30.00%
 #> R/writing_tools.R: 18.75%
 #> R/utils.R: 66.67%

@@ -78,6 +78,7 @@
     
     
 
+<p><!-- badges: end --></p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="gephi" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
@@ -116,14 +117,14 @@
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;     union</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/V">V</a></span>(graphexample)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; + 5/5 vertices, named, from 78f90e5:</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; + 5/5 vertices, named, from 3f94ec7:</span></a>
 <a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; [1] a d b c f</span></a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw"><a href="https://www.rdocumentation.org/packages/igraph/topics/E">E</a></span>(graphexample)</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; + 5/5 edges from 78f90e5 (vertex names):</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; + 5/5 edges from 3f94ec7 (vertex names):</span></a>
 <a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; [1] a-&gt;b a-&gt;c a-&gt;d d-&gt;b d-&gt;f</span></a>
 <a class="sourceLine" id="cb2-17" data-line-number="17"><span class="kw"><a href="reference/gephi_write_nodes.html">gephi_write_edges</a></span>(graphexample, <span class="st">"edges.csv"</span>)</a>
 <a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; writing edgesgraphexample</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; to edgefile: edges.csv</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; to edgefile: edges.csv/n</span></a></code></pre></div>
 <p>Technically an tidygraph object is also an igraph object so the writing will work the same.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(gephi)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidygraph)</a>
@@ -166,7 +167,7 @@
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="reference/gephi_write_nodes.html">gephi_write_edges</a></span>(<span class="st">"edges_subset.csv"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>()</a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; writing edges.</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; to edgefile: edges_subset.csv</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; to edgefile: edges_subset.csv/n</span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; # A tbl_graph: 3 nodes and 2 edges</span></a>
 <a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; #</span></a>
 <a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; # A rooted tree</span></a>
@@ -184,31 +185,37 @@
 <a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; 2 b     blue </span></a>
 <a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 3 c     blue</span></a></code></pre></div>
 <p>But is is also possible to write a set of edges when there is no graph object, just a dataframe.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">a_nice_df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="dt">start =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>),</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">finish =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>),</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="dt">weight =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="reference/gephi_write_edges_from_df.html">gephi_write_edges_from_df</a></span>(<span class="dt">path =</span> <span class="st">"edges2.csv"</span>)</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;   start finish weight</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 1     1      2      1</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 2     2      4      1</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 3     3      4      1</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 4     4      7      2</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 5     5      2      6</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 6     6      1      1</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 7     7      3      1</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; writing edges from dataframestructure(list(Source = c(1, 2, 3, 4, 5, 6, 7), Target = c(2, </span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; to edgefile: edges2.csvwriting edges from dataframe4, 4, 7, 2, 1, 3), weight = c(1, 1, 1, 2, 6, 1, 1)), class = "data.frame", row.names = c(NA, </span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; to edgefile: edges2.csvwriting edges from dataframe-7L))</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; to edgefile: edges2.csv</span></a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.remove</a></span>(<span class="st">"edges.csv"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.remove</a></span>(<span class="st">"edges2.csv"</span>)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] TRUE</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.remove</a></span>(<span class="st">"edges_subset.csv"</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-5" data-line-number="5">)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(a_nice_df) </a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;   start finish weight</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 1     1      2      1</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 2     2      4      1</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 3     3      4      1</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 4     4      7      2</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 5     5      2      6</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 6     6      1      1</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 7     7      3      1</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw"><a href="reference/gephi_write_edges_from_df.html">gephi_write_edges_from_df</a></span>(a_nice_df, <span class="dt">path =</span> <span class="st">"edges2.csv"</span>)</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; writing edges from dataframe </span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; to edgefile: edges2.csv</span></a></code></pre></div>
+<details><p><summary> Test coverage statistics </summary></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">covr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/covr/topics/package_coverage">package_coverage</a></span>(<span class="dt">type =</span> <span class="st">"tests"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; files differ in number of lines:</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; gephi Coverage: 30.00%</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; R/writing_tools.R: 18.75%</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; R/utils.R: 66.67%</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; R/read_tools.R: 100.00%</span></a></code></pre></div>
+</details><div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.remove</a></span>(<span class="st">"edges.csv"</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.remove</a></span>(<span class="st">"edges2.csv"</span>)</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; [1] TRUE</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/files">file.remove</a></span>(<span class="st">"edges_subset.csv"</span>)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
 </div>
 </div>
 <div id="links" class="section level1">
@@ -249,7 +256,10 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="http://choosealicense.com/"><img src="https://img.shields.io/badge/license-MIT%20+%20file%20LICENSE-lightgrey.svg" alt="license"></a></li>
+<li><a href="http://choosealicense.com/"><img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" alt="license"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://codecov.io/gh/RMHogervorst/gephi"><img src="https://codecov.io/gh/RMHogervorst/gephi/branch/master/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://travis-ci.org/RMHogervorst/gephi"><img src="https://travis-ci.org/RMHogervorst/gephi.svg?branch=master" alt="Build Status"></a></li>
 </ul>
 </div>
 </div>

@@ -1,6 +1,8 @@
 
-<!-- badges: start --> [![Project Status: Active – The project has
-reached a stable, usable state and is being actively
+<!-- badges: start -->
+
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](http://choosealicense.com/)
 [![Lifecycle:
@@ -60,10 +62,10 @@ library(igraph)
 #> 
 #>     union
 V(graphexample)
-#> + 5/5 vertices, named, from 3f94ec7:
+#> + 5/5 vertices, named, from c4d510b:
 #> [1] a d b c f
 E(graphexample)
-#> + 5/5 edges from 3f94ec7 (vertex names):
+#> + 5/5 edges from c4d510b (vertex names):
 #> [1] a->b a->c a->d d->b d->f
 gephi_write_edges(graphexample, "edges.csv")
 #> writing edgesgraphexample
@@ -160,8 +162,7 @@ print(a_nice_df)
 #> 6     6      1      1
 #> 7     7      3      1
 gephi_write_edges_from_df(a_nice_df, path = "edges2.csv")
-#> writing edges from dataframe 
-#> to edgefile: edges2.csv
+#> writing edges from dataframe to edgefile: edges2.csv
 ```
 
 <details>
@@ -170,8 +171,6 @@ gephi_write_edges_from_df(a_nice_df, path = "edges2.csv")
 
 ``` r
 covr::package_coverage(type = "tests")
-#> 
-#> files differ in number of lines:
 #> gephi Coverage: 30.00%
 #> R/writing_tools.R: 18.75%
 #> R/utils.R: 66.67%

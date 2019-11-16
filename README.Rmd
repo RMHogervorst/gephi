@@ -2,7 +2,9 @@
 output: github_document
 ---
  <!-- badges: start --> 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](http://choosealicense.com/)
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) 
+[![license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](http://choosealicense.com/)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![codecov](https://codecov.io/gh/RMHogervorst/gephi/branch/master/graph/badge.svg)](https://codecov.io/gh/RMHogervorst/gephi)
 [![Build Status](https://travis-ci.org/RMHogervorst/gephi.svg?branch=master)](https://travis-ci.org/RMHogervorst/gephi)
@@ -29,7 +31,7 @@ format as gephi.
 
 I've found the need to convert tidygraph/igraph objects into a node and edge csv, 
 to visualize in gephi quite often. 
-This should be trivial, but gephi is a bit particular and wants specific column 
+This task should  be trivial, but gephi is a bit particular and wants specific column 
 names. 
 
 ## What does the package do?
@@ -78,7 +80,7 @@ library(tidygraph)
 More specifically if you want to modify your graph and 
 visualize a subset in gephi, here is a tidygraph worked example where
 I select only the edges that are blue, add a new edge property and write the 
-resuling graph to the :
+resuling graph to csv:
 
 ```{r}
 tidy_graphexample %>%  # but the igraph object works just as well
@@ -113,13 +115,17 @@ covr::package_coverage(type = "tests")
 </details>
 
 
+<details>
+<summary> cleaning up after ourselves for this demo </summary>
 ```{r cleaning up afterwards}
 file.remove("edges.csv")
 file.remove("edges2.csv")
 file.remove("edges_subset.csv")
 ```
 
+</details>
+
 
 # Links
 
-- [Gephi website](https://gephi.org/)
+- [Gephi (the graph visualisation software, not this interface) website](https://gephi.org/)

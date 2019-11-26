@@ -17,7 +17,7 @@ Description:
     friction when switching between tools.
 License: MIT + file LICENSE
 BugReports: https://github.com/RMHogervorst/gephi/issues
-URL: https://github.com/RMHogervorst/gephi
+URL: http://rmhogervorst.nl/gephi/, https://github.com/RMHogervorst/gephi
 Depends:
     R(>= 2.10)
 Suggests: 
@@ -29,5 +29,5 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     igraph (>= 1.2.4.0)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
 Language: en-US

@@ -3,7 +3,6 @@
 \docType{package}
 \name{gephi}
 \alias{gephi}
-\alias{gephi-package}
 \title{Gephi.}
 \description{
 Make your workflow with network data easier. The gephi package does not

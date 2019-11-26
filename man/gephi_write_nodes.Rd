@@ -48,6 +48,7 @@ specify if that is not the case.
 }}
 
 \seealso{
-Other write_graphs: \code{\link{gephi_write_edges_from_df}}
+Other write_graphs: 
+\code{\link{gephi_write_edges_from_df}()}
 }
 \concept{write_graphs}

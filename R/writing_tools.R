@@ -31,7 +31,7 @@
 #' specify if that is not the case.
 #'
 #' @param graph The igraph or tidygraph object your work  with
-#' @param path the file where to save to e.g.: edges.csv or data/edges.csv
+#' @param path The file where to save to e.g.: edges.csv or data/edges.csv
 #' @param na How to record missing values, defaults to "", nothing / empty values
 #' @param verbose by default these functions are chatty and will tell you what they do if you do not want that, set to FALSE
 #' @param pathedges where to save the edges file e.g.: 'edges.csv'

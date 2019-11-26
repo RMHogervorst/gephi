@@ -6,18 +6,30 @@
 #' of dependencies low.
 #' @importFrom utils write.csv
 #' @noRd
-write_safe <- function(x, path, na = "") {
+write_safe <- function(x, path, na = "", sep = ",") {
   if (requireNamespace("readr", quietly = TRUE)) {
-    readr::write_csv(x = x, path = path, na = na)
+    if (sep == ",") {
+      readr::write_csv(x = x, path = path, na = na)
+    } else if (sep == ";") {
+      readr::write_csv2(x = x, path = path, na = na)
+    } else {
+      stop("Seperator (sep) needs to be , or ;")
+    }
   } else {
-    write.csv(x = x, file = path, na.strings = na)
+    utils::write.csv(x = x, file = path, na.strings = na, sep = sep)
   }
 }
 
-read_safe <- function(path, na = "") {
+read_safe <- function(path, na = "", sep = ",") {
   if (requireNamespace("readr", quietly = TRUE)) {
-    readr::read_csv(file = path, na = na)
+    if (sep == ",") {
+      readr::read_csv(file = path, na = na)
+    } else if (sep == ";") {
+      readr::read_csv2(file = path, na = na)
+    } else {
+      stop("Seperator (sep) needs to be , or ;")
+    }
   } else {
-    read.csv(file = path, na = na)
+    utils::read.csv(file = path, na = na, sep = sep)
   }
 }

@@ -4,8 +4,14 @@
 \alias{gephi_write_edges_from_df}
 \title{Write edges from a data.frame to a file}
 \usage{
-gephi_write_edges_from_df(dataframe, from = NULL, to = NULL, path,
-  na = "", verbose = TRUE)
+gephi_write_edges_from_df(
+  dataframe,
+  from = NULL,
+  to = NULL,
+  path,
+  na = "",
+  verbose = TRUE
+)
 }
 \arguments{
 \item{dataframe}{which dataframe}
@@ -31,6 +37,7 @@ end. If you don't specify it, this function expects the first column to be a
 the start and second column the end point of an edge.
 }
 \seealso{
-Other write_graphs: \code{\link{gephi_write_nodes}}
+Other write_graphs: 
+\code{\link{gephi_write_nodes}()}
 }
 \concept{write_graphs}

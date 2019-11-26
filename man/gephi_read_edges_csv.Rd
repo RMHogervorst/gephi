@@ -4,10 +4,23 @@
 \alias{gephi_read_edges_csv}
 \title{Read edges}
 \usage{
-gephi_read_edges_csv(path, source = "Source", target = "Target",
-  directed = TRUE)
+gephi_read_edges_csv(
+  path,
+  source = "Source",
+  target = "Target",
+  directed = TRUE
+)
+}
+\arguments{
+\item{path}{The file where to read from e.g.: edges.csv or data/edges.csv}
+
+\item{source}{What column is the source, defaults to 'Source'.}
+
+\item{target}{What column is the target, defaults to 'Target'.}
+
+\item{directed, }{is the graph directed or not? defaults to TRUE.}
 }
 \description{
-Read edges
+This function reads in an edges csv file exported from gephi into igraph.
 }
 \concept{read_graphs}

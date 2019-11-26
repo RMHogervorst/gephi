@@ -20,7 +20,7 @@ gephi_write_edges_from_df(
 
 \item{to}{which column does the edge end}
 
-\item{path}{the file where to save to e.g.: edges.csv or data/edges.csv}
+\item{path}{The file where to save to e.g.: edges.csv or data/edges.csv}
 
 \item{na}{How to record missing values, defaults to "", nothing / empty values}
 

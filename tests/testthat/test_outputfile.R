@@ -9,7 +9,7 @@ test_that("edgefile has correct columns", {
   edgefilelocation <- "edgefile.csv"
   gephi_write_edges(graphexample, path = edgefilelocation)
   # read the file in
-  read_edgefile <- read.csv(edgefilelocation)
+  read_edgefile <- utils::read.csv(edgefilelocation)
 
   # now the testing is started
   expect_true(all(names(read_edgefile)[1:2] == c("Source", "Target")))

@@ -15,7 +15,7 @@ gephi_write_both(graph, pathedges, pathnodes, na = "", verbose = TRUE)
 \arguments{
 \item{graph}{The igraph or tidygraph object your work  with}
 
-\item{path}{the file where to save to e.g.: edges.csv or data/edges.csv}
+\item{path}{The file where to save to e.g.: edges.csv or data/edges.csv}
 
 \item{na}{How to record missing values, defaults to "", nothing / empty values}
 

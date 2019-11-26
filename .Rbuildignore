@@ -4,3 +4,6 @@
 ^todo\.md$
 ^README\.Rmd$
 ^\.travis\.yml$
+^appveyor\.yml$
+^docs$
+^tic\.R$

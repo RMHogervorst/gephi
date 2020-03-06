@@ -40,7 +40,7 @@
 #' @export
 #' @family write_graphs
 gephi_write_nodes <- function(graph, path, na = "", verbose = TRUE) {
-  result <- igraph::get.data.frame(graph, what = "nodes")
+  result <- igraph::get.data.frame(graph, what = "vertices")
   names(result)[1] <- "Id"
   if (verbose) {
     message(paste0("writing nodes", deparse(substitute(graph)), "\nto nodefile: ", path, "/n"))

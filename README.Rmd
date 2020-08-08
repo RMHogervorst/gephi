@@ -80,7 +80,7 @@ library(tidygraph)
 More specifically if you want to modify your graph and 
 visualize a subset in gephi, here is a tidygraph worked example where
 I select only the edges that are blue, add a new edge property and write the 
-resuling graph to csv:
+resulting graph to csv:
 
 ```{r}
 tidy_graphexample %>%  # but the igraph object works just as well

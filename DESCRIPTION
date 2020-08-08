@@ -1,6 +1,6 @@
 Package: gephi
 Title: Write graph objects to a file format that gephi understands
-Version: 0.0.1
+Version: 1.0.0
 Authors@R: person("Roel M.", "Hogervorst", 
             email ="hogervorst.rm@gmail.com", 
             role = c("cre", "aut"), 
@@ -29,5 +29,5 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     igraph (>= 1.2.4.0)
-RoxygenNote: 7.0.0
+RoxygenNote: 7.1.1
 Language: en-US

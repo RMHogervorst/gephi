@@ -23,8 +23,8 @@ network vizualisation software gephi but it writes and reads in the same
 csv format as gephi.
 
 I’ve found the need to convert tidygraph/igraph objects into a node and
-edge csv, to visualize in gephi quite often. This should be trivial, but
-gephi is a bit particular and wants specific column names.
+edge csv, to visualize in gephi quite often. This task should be
+trivial, but gephi is a bit particular and wants specific column names.
 
 ## What does the package do?
 
@@ -62,10 +62,10 @@ library(igraph)
 #> 
 #>     union
 V(graphexample)
-#> + 5/5 vertices, named, from c4d510b:
+#> + 5/5 vertices, named, from b833ca0:
 #> [1] a d b c f
 E(graphexample)
-#> + 5/5 edges from c4d510b (vertex names):
+#> + 5/5 edges from b833ca0 (vertex names):
 #> [1] a->b a->c a->d d->b d->f
 gephi_write_edges(graphexample, "edges.csv")
 #> writing edgesgraphexample
@@ -112,8 +112,8 @@ library(tidygraph)
 
 More specifically if you want to modify your graph and visualize a
 subset in gephi, here is a tidygraph worked example where I select only
-the edges that are blue, add a new edge property and write the resuling
-graph to the :
+the edges that are blue, add a new edge property and write the resulting
+graph to csv:
 
 ``` r
 tidy_graphexample %>%  # but the igraph object works just as well
@@ -171,13 +171,19 @@ gephi_write_edges_from_df(a_nice_df, path = "edges2.csv")
 
 ``` r
 covr::package_coverage(type = "tests")
-#> gephi Coverage: 30.00%
+#> 
+#> files differ in number of lines:
+#> gephi Coverage: 32.00%
 #> R/writing_tools.R: 18.75%
-#> R/utils.R: 66.67%
+#> R/utils.R: 42.86%
 #> R/read_tools.R: 100.00%
 ```
 
 </details>
+
+<details>
+
+<summary> cleaning up after ourselves for this demo </summary>
 
 ``` r
 file.remove("edges.csv")
@@ -188,6 +194,9 @@ file.remove("edges_subset.csv")
 #> [1] TRUE
 ```
 
+</details>
+
 # Links
 
-  - [Gephi website](https://gephi.org/)
+  - [Gephi (the graph visualisation software, not this interface)
+    website](https://gephi.org/)

@@ -6,10 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Write graph objects to a file format that gephi understands • gephi</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Write graph objects to a file format that gephi understands">
 <meta property="og:description" content="
     Sometimes you want to visualize your graph information in gephi. 
@@ -21,13 +22,12 @@
     interface with the open source network visualisation tool gephi but it
     writes and reads csv files in a way that gephi expects, reducing the 
     friction when switching between tools.">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gephi</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -61,7 +61,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/RMHogervorst/gephi">
+  <a href="https://github.com/RMHogervorst/gephi/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -86,7 +86,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#gephi" class="anchor"></a>gephi</h1></div>
 <p>This is a simple package to export files into a csv format that gephi can understand. This package does not interface with the open source network vizualisation software gephi but it writes and reads in the same csv format as gephi.</p>
-<p>I’ve found the need to convert tidygraph/igraph objects into a node and edge csv, to visualize in gephi quite often. This should be trivial, but gephi is a bit particular and wants specific column names.</p>
+<p>I’ve found the need to convert tidygraph/igraph objects into a node and edge csv, to visualize in gephi quite often. This task should be trivial, but gephi is a bit particular and wants specific column names.</p>
 <div id="what-does-the-package-do" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-does-the-package-do" class="anchor"></a>What does the package do?</h2>
@@ -96,8 +96,8 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install this developmental version with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"RMHogervorst/gephi"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"RMHogervorst/gephi"</span>)</pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -108,134 +108,134 @@
 <li>dataframe to csv</li>
 </ul>
 <p>Writing out an igraph file to csv:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(gephi) <span class="co"># includes the graphexample file</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(igraph)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'igraph'</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;     decompose, spectrum</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; The following object is masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;     union</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/pkg/igraph/man/V.html">V</a></span>(graphexample)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; + 5/5 vertices, named, from c4d510b:</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; [1] a d b c f</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw"><a href="https://rdrr.io/pkg/igraph/man/E.html">E</a></span>(graphexample)</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; + 5/5 edges from c4d510b (vertex names):</span></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; [1] a-&gt;b a-&gt;c a-&gt;d d-&gt;b d-&gt;f</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="kw"><a href="reference/gephi_write_nodes.html">gephi_write_edges</a></span>(graphexample, <span class="st">"edges.csv"</span>)</a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; writing edgesgraphexample</span></a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; to edgefile: edges.csv/n</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gephi</span>) <span class="co"># includes the graphexample file</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">igraph</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'igraph'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     decompose, spectrum</span>
+<span class="co">#&gt; The following object is masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     union</span>
+<span class="fu"><a href="https://rdrr.io/pkg/igraph/man/V.html">V</a></span>(<span class="no">graphexample</span>)
+<span class="co">#&gt; + 5/5 vertices, named, from b833ca0:</span>
+<span class="co">#&gt; [1] a d b c f</span>
+<span class="fu"><a href="https://rdrr.io/pkg/igraph/man/E.html">E</a></span>(<span class="no">graphexample</span>)
+<span class="co">#&gt; + 5/5 edges from b833ca0 (vertex names):</span>
+<span class="co">#&gt; [1] a-&gt;b a-&gt;c a-&gt;d d-&gt;b d-&gt;f</span>
+<span class="fu"><a href="reference/gephi_write_nodes.html">gephi_write_edges</a></span>(<span class="no">graphexample</span>, <span class="st">"edges.csv"</span>)
+<span class="co">#&gt; writing edgesgraphexample</span>
+<span class="co">#&gt; to edgefile: edges.csv/n</span></pre></div>
 <p>Technically an tidygraph object is also an igraph object so the writing will work the same.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(gephi)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidygraph)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'tidygraph'</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; The following object is masked from 'package:igraph':</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;     groups</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; The following object is masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;     filter</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">(tidy_graphexample &lt;-<span class="st"> </span>tidygraph<span class="op">::</span><span class="kw">as_tbl_graph</span>(graphexample)) <span class="co"># Just to show where this function comes from</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # A tbl_graph: 5 nodes and 5 edges</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; #</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; # A directed acyclic simple graph with 1 component</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; #</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; # Node Data: 5 x 2 (active)</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;   name  color </span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; 1 a     blue  </span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt; 2 d     red   </span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; 3 b     blue  </span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt; 4 c     blue  </span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt; 5 f     yellow</span></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; #</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; # Edge Data: 5 x 3</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt;    from    to weight</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; 1     1     3      1</span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; 2     1     4      1</span></a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; 3     1     2      1</span></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt; # … with 2 more rows</span></a></code></pre></div>
-<p>More specifically if you want to modify your graph and visualize a subset in gephi, here is a tidygraph worked example where I select only the edges that are blue, add a new edge property and write the resuling graph to the :</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tidy_graphexample <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># but the igraph object works just as well</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">    </span><span class="kw">activate</span>(nodes) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(color <span class="op">==</span><span class="st"> "blue"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">    </span><span class="kw">activate</span>(edges) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">dongle =</span> <span class="st">"dingle"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="reference/gephi_write_nodes.html">gephi_write_edges</a></span>(<span class="st">"edges_subset.csv"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>()</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; writing edges.</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; to edgefile: edges_subset.csv/n</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; # A tbl_graph: 3 nodes and 2 edges</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; #</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; # A rooted tree</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; #</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; # Edge Data: 2 x 4 (active)</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;    from    to weight dongle</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt; </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; 1     1     2      1 dingle</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; 2     1     3      1 dingle</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; #</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; # Node Data: 3 x 2</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;   name  color</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 1 a     blue </span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; 2 b     blue </span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 3 c     blue</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gephi</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidygraph</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'tidygraph'</span>
+<span class="co">#&gt; The following object is masked from 'package:igraph':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     groups</span>
+<span class="co">#&gt; The following object is masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter</span>
+
+(<span class="no">tidy_graphexample</span> <span class="kw">&lt;-</span> <span class="kw pkg">tidygraph</span><span class="kw ns">::</span><span class="fu">as_tbl_graph</span>(<span class="no">graphexample</span>)) <span class="co"># Just to show where this function comes from</span>
+<span class="co">#&gt; # A tbl_graph: 5 nodes and 5 edges</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # A directed acyclic simple graph with 1 component</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Node Data: 5 x 2 (active)</span>
+<span class="co">#&gt;   name  color </span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt; </span>
+<span class="co">#&gt; 1 a     blue  </span>
+<span class="co">#&gt; 2 d     red   </span>
+<span class="co">#&gt; 3 b     blue  </span>
+<span class="co">#&gt; 4 c     blue  </span>
+<span class="co">#&gt; 5 f     yellow</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Edge Data: 5 x 3</span>
+<span class="co">#&gt;    from    to weight</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     1     3      1</span>
+<span class="co">#&gt; 2     1     4      1</span>
+<span class="co">#&gt; 3     1     2      1</span>
+<span class="co">#&gt; # … with 2 more rows</span></pre></div>
+<p>More specifically if you want to modify your graph and visualize a subset in gephi, here is a tidygraph worked example where I select only the edges that are blue, add a new edge property and write the resulting graph to csv:</p>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="no">tidy_graphexample</span> <span class="kw">%&gt;%</span>  <span class="co"># but the igraph object works just as well</span>
+    <span class="fu">activate</span>(<span class="no">nodes</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">color</span> <span class="kw">==</span> <span class="st">"blue"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">activate</span>(<span class="no">edges</span>) <span class="kw">%&gt;%</span>
+    <span class="fu">mutate</span>(<span class="kw">dongle</span> <span class="kw">=</span> <span class="st">"dingle"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="reference/gephi_write_nodes.html">gephi_write_edges</a></span>(<span class="st">"edges_subset.csv"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>()
+<span class="co">#&gt; writing edges.</span>
+<span class="co">#&gt; to edgefile: edges_subset.csv/n</span>
+<span class="co">#&gt; # A tbl_graph: 3 nodes and 2 edges</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # A rooted tree</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Edge Data: 2 x 4 (active)</span>
+<span class="co">#&gt;    from    to weight dongle</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt; </span>
+<span class="co">#&gt; 1     1     2      1 dingle</span>
+<span class="co">#&gt; 2     1     3      1 dingle</span>
+<span class="co">#&gt; #</span>
+<span class="co">#&gt; # Node Data: 3 x 2</span>
+<span class="co">#&gt;   name  color</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt; 1 a     blue </span>
+<span class="co">#&gt; 2 b     blue </span>
+<span class="co">#&gt; 3 c     blue</span></pre></div>
 <p>But is is also possible to write a set of edges when there is no graph object, just a dataframe.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">a_nice_df &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="dt">start =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>),</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">    <span class="dt">finish =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="dt">weight =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">)</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(a_nice_df) </a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;   start finish weight</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 1     1      2      1</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 2     2      4      1</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 3     3      4      1</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 4     4      7      2</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 5     5      2      6</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 6     6      1      1</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; 7     7      3      1</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw"><a href="reference/gephi_write_edges_from_df.html">gephi_write_edges_from_df</a></span>(a_nice_df, <span class="dt">path =</span> <span class="st">"edges2.csv"</span>)</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; writing edges from dataframe to edgefile: edges2.csv</span></a></code></pre></div>
-<details><summary> Test coverage statistics </summary>
-
-``` r
-covr::package_coverage(type = "tests")
-#&gt; gephi Coverage: 30.00%
-#&gt; R/writing_tools.R: 18.75%
-#&gt; R/utils.R: 66.67%
-#&gt; R/read_tools.R: 100.00%
-```
-
-</details><div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"edges.csv"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] TRUE</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"edges2.csv"</span>)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] TRUE</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"edges_subset.csv"</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [1] TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="no">a_nice_df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
+    <span class="kw">start</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>),
+    <span class="kw">finish</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2</span>,<span class="fl">4</span>,<span class="fl">4</span>,<span class="fl">7</span>,<span class="fl">2</span>,<span class="fl">1</span>,<span class="fl">3</span>),
+    <span class="kw">weight</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">6</span>,<span class="fl">1</span>,<span class="fl">1</span>)
+)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">a_nice_df</span>)
+<span class="co">#&gt;   start finish weight</span>
+<span class="co">#&gt; 1     1      2      1</span>
+<span class="co">#&gt; 2     2      4      1</span>
+<span class="co">#&gt; 3     3      4      1</span>
+<span class="co">#&gt; 4     4      7      2</span>
+<span class="co">#&gt; 5     5      2      6</span>
+<span class="co">#&gt; 6     6      1      1</span>
+<span class="co">#&gt; 7     7      3      1</span>
+<span class="fu"><a href="reference/gephi_write_edges_from_df.html">gephi_write_edges_from_df</a></span>(<span class="no">a_nice_df</span>, <span class="kw">path</span> <span class="kw">=</span> <span class="st">"edges2.csv"</span>)
+<span class="co">#&gt; writing edges from dataframe to edgefile: edges2.csv</span></pre></div>
+<details><p><summary> Test coverage statistics </summary></p>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="kw pkg">covr</span><span class="kw ns">::</span><span class="fu"><a href="http://covr.r-lib.org/reference/package_coverage.html">package_coverage</a></span>(<span class="kw">type</span> <span class="kw">=</span> <span class="st">"tests"</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; files differ in number of lines:</span>
+<span class="co">#&gt; gephi Coverage: 32.00%</span>
+<span class="co">#&gt; R/writing_tools.R: 18.75%</span>
+<span class="co">#&gt; R/utils.R: 42.86%</span>
+<span class="co">#&gt; R/read_tools.R: 100.00%</span></pre></div>
+</details><details><p><summary> cleaning up after ourselves for this demo </summary></p>
+<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"edges.csv"</span>)
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"edges2.csv"</span>)
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span>(<span class="st">"edges_subset.csv"</span>)
+<span class="co">#&gt; [1] TRUE</span></pre></div>
+</details>
 </div>
 </div>
 <div id="links" class="section level1">
 <h1 class="hasAnchor">
 <a href="#links" class="anchor"></a>Links</h1>
 <ul>
-<li><a href="https://gephi.org/">Gephi website</a></li>
+<li><a href="https://gephi.org/">Gephi (the graph visualisation software, not this interface) website</a></li>
 </ul>
 </div>
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/RMHogervorst/gephi">https://​github.com/​RMHogervorst/​gephi</a>
+<li>Browse source code at <br><a href="https://github.com/RMHogervorst/gephi/">https://​github.com/​RMHogervorst/​gephi/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/RMHogervorst/gephi/issues">https://​github.com/​RMHogervorst/​gephi/​issues</a>
 </li>
@@ -252,7 +252,7 @@ covr::package_coverage(type = "tests")
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Roel M. Hogervorst <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0001-7509-0328" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>Roel M. Hogervorst <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0001-7509-0328" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -275,7 +275,7 @@ covr::package_coverage(type = "tests")
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

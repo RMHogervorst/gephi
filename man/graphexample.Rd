@@ -5,7 +5,7 @@
 \alias{graphexample}
 \title{a super simple graph example}
 \format{
-An object of class \code{igraph} of length 10.
+An object of class \code{igraph} of length 5.
 }
 \usage{
 graphexample

@@ -16,7 +16,7 @@ write_safe <- function(x, path, na = "", sep = ",") {
       stop("Seperator (sep) needs to be , or ;")
     }
   } else {
-    utils::write.csv(x = x, file = path, na.strings = na, sep = sep)
+    utils::write.table(x = x, file = path,na = na, sep = sep)
   }
 }
 
@@ -30,6 +30,6 @@ read_safe <- function(path, na = "", sep = ",") {
       stop("Seperator (sep) needs to be , or ;")
     }
   } else {
-    utils::read.csv(file = path, na = na, sep = sep)
+    utils::read.table(file = path, na = na, sep = sep)
   }
 }
